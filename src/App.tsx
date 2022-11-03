@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import './App.scss';
+import { InputContainer } from './InputContainer';
 
 function App() {
+  const [to, setTo] = useState("");
+  const [value, setValue] = useState(0);
+  const [data, setData] = useState("");
+
+  const handleSubmit = (e:any) => {
+    console.log(e.target);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+
+      <InputContainer value={to} setter={setTo} type={"text"} label={"To"}/>
+
+      <div>
+        <input value={value} type="number" onChange={e => setValue(parseFloat(e.target.value))} /> ETH
+      </div>
+      <div>
+        <input value={data} type="text" onChange={e => setData(e.target.value)}/>
+      </div>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }
 
-export default App;
+export default App; 
