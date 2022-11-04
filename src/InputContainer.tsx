@@ -1,16 +1,14 @@
+import './App.scss';
+
 export function InputContainer(props: InputContainerInterface) {
     return(
-        <div style={{flexDirection: 'column'}}>
-            {props.label} <br/>
-            {props.type === "text" &&  <input value={props.value} type="text" onChange={e => props.setter(e.target.value)}/> }
-            {props.type === "number" &&  <input value={props.value} type="number" onChange={e => props.setter(parseFloat(e.target.value))}/> }
+        <div style={{margin:'10px'}}>
+            <div className='text'>{props.label}:</div> <br/>
+            {props.type === "text" &&  <input value={props.value} type="text" onChange={e => props.setter(e.target.value)} className='input'/> }
+            {props.type === "number" &&  <input value={props.value} type="number" onChange={e => props.setter(parseFloat(e.target.value))} className='input'/> }
       </div>
     )
 }
-
-// const styles = {
-//     flexDirection: 'column'
-// }
 
 interface InputContainerInterface {
     label: String,

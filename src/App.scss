@@ -1,13 +1,41 @@
-$backgroundColor: linear-gradient(90deg, rgba(238,238,240,1) 0%, rgba(249,166,215,0.9262298669467787) 70%, rgba(250,77,192,1) 98%);
-
-// background: rgb(238,238,240);
- 
+$backgroundColor: linear-gradient(90deg, rgba(238,238,240,1) 0%, rgba(249,166,215,0.9262298669467787) 70%, rgba(250,77,192,1) 98%); 
+$br: 16px;
+$padding: 8px;
+$border-color: rgb(235, 145, 235);
 
 .container {
   background: $backgroundColor;
   text-align: center;
-  flex-direction: column;
-  height: 100vh;
+  justify-content: center;
+  height: 100%;
   width: 100%;
   position: fixed;
+  padding-top: 10%;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.input {
+  border-radius: $br;
+  padding: $padding;
+  width: 40%;
+  font-size: 20px;
+  border-color: fuchsia;
+}
+
+.submit {
+  border-radius: $br;
+  padding: $padding;
+  background-color: $border-color;
+  border-color: $border-color;
+}
+
+.errorText {
+  color: red;
+  font-size: 20px;
+  font-weight: 1000;
+  margin-top: 10;
 }
