@@ -21,7 +21,7 @@ function App() {
       from: await signer.getAddress(),
       to: to,
       value: ethers.utils.parseUnits(txValue.toString(), "ether"),
-      //data: data
+      data: ethers.utils.toUtf8Bytes(data)
     }
 
     try {
@@ -43,15 +43,15 @@ function App() {
   return (
     <div className="container">
 
+      { error && <div className="errorText">Error: {error}</div> }
+
       <InputContainer value={to} setter={setTo} type={"text"} label={"To"}/>
 
       <InputContainer value={txValue} setter={setTxValue} type={"number"} label={"Value (In ETH)"} />
 
-      <InputContainer value={data} setter={setData} type={"text"} label={"Data"} />
+      <InputContainer value={data} setter={setData} type={"textArea"} label={"Data"} />
   
       <button onClick={handleSubmit} className='submit'><div className='text'>Submit</div></button>
-
-      { error && <div className="errorText">{error}</div> }
 
     </div>
   );

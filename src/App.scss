@@ -24,6 +24,11 @@ $border-color: rgb(235, 145, 235);
   width: 40%;
   font-size: 20px;
   border-color: fuchsia;
+  border-width: 2px;
+}
+
+.textArea {
+  @extend .input;
 }
 
 .submit {

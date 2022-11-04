@@ -5,6 +5,7 @@ export function InputContainer(props: InputContainerInterface) {
         <div style={{margin:'10px'}}>
             <div className='text'>{props.label}:</div> <br/>
             {props.type === "text" &&  <input value={props.value} type="text" onChange={e => props.setter(e.target.value)} className='input'/> }
+            {props.type === "textArea" && <textarea value={props.value} onChange = {e => props.setter(e.target.value)} className='textArea' /> }
             {props.type === "number" &&  <input value={props.value} type="number" onChange={e => props.setter(parseFloat(e.target.value))} className='input'/> }
       </div>
     )
@@ -13,6 +14,6 @@ export function InputContainer(props: InputContainerInterface) {
 interface InputContainerInterface {
     label: String,
     value: any,
-    type: "text" | "number",
+    type: "text" | "number" | "textArea",
     setter: Function
 }
