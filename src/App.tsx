@@ -9,8 +9,14 @@ function App() {
   const [data, setData] = useState("");
   const [error, setError] = useState("");
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
+  let signer: any, provider: any, hasProvider = true;
+  try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+  } catch {
+    hasProvider = false;
+  }
+
 
   const handleSubmit = async () => {
     setError("");
@@ -39,21 +45,23 @@ function App() {
       await provider.send("eth_requestAccounts", [])
     }
   }
-
   return (
-    <div className="container">
+    hasProvider 
+      ? <div className="container">
 
-      { error && <div className="errorText">Error: {error}</div> }
+        { error && <div className="errorText">Error: {error}</div> }
 
-      <InputContainer value={to} setter={setTo} type={"text"} label={"To"}/>
+        <InputContainer value={to} setter={setTo} type={"text"} label={"To"}/>
 
-      <InputContainer value={txValue} setter={setTxValue} type={"number"} label={"Value (In ETH)"} />
+        <InputContainer value={txValue} setter={setTxValue} type={"number"} label={"Value (In ETH)"} />
 
-      <InputContainer value={data} setter={setData} type={"textArea"} label={"Data"} />
-  
-      <button onClick={handleSubmit} className='submit'><div className='text'>Submit</div></button>
+        <InputContainer value={data} setter={setData} type={"textArea"} label={"Data"} />
+    
+        <button onClick={handleSubmit} className='submit'><div className='text'>Submit</div></button>
 
-    </div>
+      </div> 
+
+      : <div className='container'><div className='errorText'>You must install metamask to use this app</div></div> 
   );
 }
 
